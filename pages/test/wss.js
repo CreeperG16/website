@@ -9,3 +9,7 @@
 
 //   return <h1>Hello!</h1>;
 // }
+
+export default function wss() {
+  return <h1>e</h1>;
+}
