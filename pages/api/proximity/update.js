@@ -9,7 +9,7 @@ export default function ({ query }, res) {
   if (!query.z) return res.status(400).json({ message: "Missing Z position" });
 
   if (!clients.get(query.userid))
-    return res.status(400).json({ message: "That user doesn't exist" });
+    return res.status(404).json({ message: "That user doesn't exist" });
 
   clients.set(query.userid, { x: query.x, y: query.y, z: query.z });
 
