@@ -8,7 +8,8 @@ export default function ({ query }, res) {
   if (!query.y) return res.status(400).json({ message: "Missing Y position" });
   if (!query.z) return res.status(400).json({ message: "Missing Z position" });
 
-  clients.set(query.userid, { x: query.x, y: query.y, z: query.z });
+  if (clients.get(query.userid))
+    clients.set(query.userid, { x: query.x, y: query.y, z: query.z });
 
   return res.status(200).json({ clients: Object.fromEntries([...clients]) });
 }
