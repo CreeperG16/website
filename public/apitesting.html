@@ -2,17 +2,29 @@
 <html lang="en">
   <head>
     <title>Test API</title>
+    <link rel="stylesheet" href="../styles/global.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
   </head>
   <body>
     <h1>Get student data</h1>
     <input type="text" id="student_id" placeholder="OM Azonosító"></input>
       <input type="date" id="student_dob" placeholder="Születési dátum"></input>
-      <button id="submit" onClick="console.log($('#student_dob').value)">
+      <button id="submit" onClick="submit();">
         Ok
       </button>
 
       <div style="visibility: hidden;" id="data">
         <h1>Hello</h1>
       </div>
+
+      <script>
+        const submit = () => {
+          const username = document.querySelector("#student_id").value;
+          const password = document.querySelector("#student_dob").value;
+          const instituteCode = "padanyi";
+
+          fetch("https://idp.e-kreta.hu/nonce").then((data) => console.log(data))
+        }
+      </script>
   </body>
 </html>
