@@ -2,9 +2,7 @@ import Head from "next/head";
 
 export default function Home() {
   const okButton = () => {
-    document
-      .getElementById("data")
-      .appendChild(document.createElement("h1", { value: "HELLo" }));
+    document.getElementById("data").append("<h1>HELLO</h1>");
   };
 
   return (
