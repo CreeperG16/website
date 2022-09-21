@@ -4,9 +4,16 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>EEEE eeee</title>
+        <title>Test API</title>
       </Head>
-      <h1>EEEEEEEE</h1>
+      <h1>Get student data</h1>
+      <input type="text" id="student_id" placeholder="OM Azonosító"></input>
+      <input type="date" id="student_dob" placeholder="Születési dátum"></input>
+      <input
+        type="button"
+        id="submit"
+        onClick={() => console.log("Hi")}
+      ></input>
     </div>
   );
 }
