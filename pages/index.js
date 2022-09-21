@@ -26,6 +26,8 @@ export default function Home() {
     //   Buffer.from([98, 97, 83, 115, 120, 79, 119, 108, 85, 49, 106, 77])
     // );
 
+    const nonce = "LdE9vPhCUxlrxwJxn8jN7A==";
+
     const hmac = hmacSHA512(
       loginData.institute_code.toUpperCase() +
         nonce +
