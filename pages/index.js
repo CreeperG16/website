@@ -18,51 +18,48 @@ export default function Home() {
       institute_code: "padanyi",
     };
 
-    let hmac, generated;
+    // fetch("https://idp.e-kreta.hu/nonce", { mode: "no-cors" })
+    // .then((data) => data.text())
+    // .then(({ data: noonce }) => {
+    // hmac = createHmac(
+    //   "sha512",
+    //   Buffer.from([98, 97, 83, 115, 120, 79, 119, 108, 85, 49, 106, 77])
+    // );
 
-    fetch("https://idp.e-kreta.hu/nonce", { mode: "no-cors" })
-      .then((data) => data.text())
-      .then(({ data: nonce }) => {
-        // hmac = createHmac(
-        //   "sha512",
-        //   Buffer.from([98, 97, 83, 115, 120, 79, 119, 108, 85, 49, 106, 77])
-        // );
+    const hmac = hmacSHA512(
+      loginData.institute_code.toUpperCase() +
+        nonce +
+        loginData.userName.toUpperCase(),
+      Buffer.from([98, 97, 83, 115, 120, 79, 119, 108, 85, 49, 106, 77])
+    );
 
-        hmac = hmacSHA512(
-          loginData.institute_code.toUpperCase() +
-            nonce +
-            loginData.userName.toUpperCase(),
-          Buffer.from([98, 97, 83, 115, 120, 79, 119, 108, 85, 49, 106, 77])
-        );
+    const generated = Base64.stringify(hmac);
 
-        generated = Base64.stringify(hmac);
+    // hmac.write(
+    //   loginData.institute_code.toUpperCase() +
+    //     nonce +
+    //     loginData.userName.toUpperCase()
+    // );
 
-        // hmac.write(
-        //   loginData.institute_code.toUpperCase() +
-        //     nonce +
-        //     loginData.userName.toUpperCase()
-        // );
+    // generated = Buffer.from(hmac.digest()).toString("base64");
 
-        // generated = Buffer.from(hmac.digest()).toString("base64");
-
-        return axios({
-          method: "post",
-          url: "https://idp.e-kreta.hu/connect/token",
-          headers: {
-            Accept: "application/json",
-            "User-Agent": "Kreta.Ellenorzo",
-            "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-            "X-AuthorizationPolicy-Version": "v2",
-            "X-AuthorizationPolicy-Key": generated,
-            "X-AuthorizationPolicy-Nonce": nonce,
-          },
-          data: qs.stringify({
-            ...loginData,
-            grant_type: "password",
-            client_id: "kreta-ellenorzo-mobile-android",
-          }),
-        });
-      })
+    axios({
+      method: "post",
+      url: "https://idp.e-kreta.hu/connect/token",
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "Kreta.Ellenorzo",
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+        "X-AuthorizationPolicy-Version": "v2",
+        "X-AuthorizationPolicy-Key": generated,
+        "X-AuthorizationPolicy-Nonce": nonce,
+      },
+      data: qs.stringify({
+        ...loginData,
+        grant_type: "password",
+        client_id: "kreta-ellenorzo-mobile-android",
+      }),
+    })
       .then(({ data: token }) =>
         axios({
           method: "get",
