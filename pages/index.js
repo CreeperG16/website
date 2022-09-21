@@ -1,6 +1,15 @@
 import Head from "next/head";
+import { useEffect, useRef } from "react";
 
 export default function Home() {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const $ = document.querySelector;
+
+    $("#submit").addEventListener("click", () => console.log("hi"));
+  });
+
   return (
     <div>
       <Head>
@@ -9,14 +18,7 @@ export default function Home() {
       <h1>Get student data</h1>
       <input type="text" id="student_id" placeholder="OM Azonosító"></input>
       <input type="date" id="student_dob" placeholder="Születési dátum"></input>
-      <button
-        onClick={() => {
-          const $ = document.querySelector;
-          $("#data").style.visibility = "visible";
-        }}
-      >
-        Ok
-      </button>
+      <button id="submit">Ok</button>
 
       <div style="visibility: hidden;" id="data">
         <h1>Hello</h1>
