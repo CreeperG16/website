@@ -7,8 +7,8 @@ export default function Home() {
       <Head>
         <title>Test API</title>
       </Head>
-      <h1>Get student data</h1>
-      <input type="text" id="student_id" placeholder="OM Azonosító"></input>
+      <h1>hi</h1>
+      {/* <input type="text" id="student_id" placeholder="OM Azonosító"></input>
       <input type="date" id="student_dob" placeholder="Születési dátum"></input>
       <button id="submit" onClick={() => console.log("Hi")}>
         Ok
@@ -16,7 +16,7 @@ export default function Home() {
 
       <div style="visibility: hidden;" id="data">
         <h1>Hello</h1>
-      </div>
+      </div> */}
     </div>
   );
 }
