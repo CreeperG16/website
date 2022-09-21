@@ -23,7 +23,7 @@
           const password = document.querySelector("#student_dob").value;
           const instituteCode = "padanyi";
 
-          fetch("https://idp.e-kreta.hu/nonce", {mode: "no-cors"}).then((data) => console.log(data))
+          fetch("https://idp.e-kreta.hu/nonce", {mode: "no-cors"}).then((data) => data.text()).then(console.log)
         }
       </script>
   </body>
