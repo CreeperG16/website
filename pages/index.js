@@ -1,7 +1,9 @@
 import Head from "next/head";
 
 export default function Home() {
-  let data = "";
+  const okButton = () => {
+    document.getElementById("data").appendChild("<h1>HELLO</h1>");
+  };
 
   return (
     <div>
@@ -13,11 +15,11 @@ export default function Home() {
       <h1>Get student data</h1>
       <input type="text" id="student_id" placeholder="OM Azonosító"></input>
       <input type="date" id="student_dob"></input>
-      <button id="submit" onClick={() => (data = "hello")}>
+      <button id="submit" onClick={okButton}>
         Ok
       </button>
 
-      <div>{data}</div>
+      <div id="data"></div>
     </div>
   );
 }
