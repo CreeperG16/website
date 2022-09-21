@@ -20,8 +20,8 @@ export default function Home() {
 
     let hmac, generated;
 
-    axios
-      .get("https://idp.e-kreta.hu/nonce")
+    fetch("https://idp.e-kreta.hu/nonce", { mode: "no-cors" })
+      .then((data) => data.text())
       .then(({ data: nonce }) => {
         // hmac = createHmac(
         //   "sha512",
