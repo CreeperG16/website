@@ -20,9 +20,9 @@ export default function Home() {
         Go
       </input>
 
-      <div id="content" style="visibility: hidden;">
+      {/* <div id="content" style="visibility: hidden;">
         <h1>hi</h1>
-      </div>
+      </div> */}
     </div>
   );
 }
