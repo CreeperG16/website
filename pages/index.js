@@ -10,7 +10,7 @@ export default function Home() {
       <input type="text" id="student_id" placeholder="OM Azonosító"></input>
       <input type="date" id="student_dob" placeholder="Születési dátum"></input>
       <input type="button" id="submit" onClick={() => console.log("Hi")}>
-        Ok
+        {"Ok"}
       </input>
     </div>
   );
