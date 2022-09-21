@@ -11,7 +11,7 @@ export default function Home() {
   });
 
   return (
-    <div>
+    <div ref={ref}>
       <Head>
         <title>Test API</title>
       </Head>
