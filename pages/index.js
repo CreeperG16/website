@@ -2,16 +2,8 @@ import Head from "next/head";
 import { useEffect, useRef } from "react";
 
 export default function Home() {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const $ = document.querySelector;
-
-    $("#submit").addEventListener("click", () => console.log("hi"));
-  });
-
   return (
-    <div ref={ref}>
+    <div>
       <Head>
         <title>Test API</title>
       </Head>
