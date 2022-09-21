@@ -8,12 +8,21 @@ export default function Home() {
       </Head>
       <h1>Get student data</h1>
       <input type="text" id="student_id" placeholder="OM Azonosító"></input>
-      <input type="date" id="student_dob" placeholder="Születési dátum"></input>
+      <label for="student_dob">Születési dátum</label>
+      <input type="date" id="student_dob" name="student_dob"></input>
       <input
         type="button"
         id="submit"
-        onClick={() => console.log("Hi")}
-      ></input>
+        onClick={() => {
+          console.log();
+        }}
+      >
+        Go
+      </input>
+
+      <div id="content" style="visibility: hidden;">
+        <h1>hi</h1>
+      </div>
     </div>
   );
 }
