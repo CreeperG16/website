@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { createHmac } from "node:crypto";
+import hmacSHA512 from "crypto-js/hmac-sha512";
 import axios from "axios";
 import qs from "qs";
 
@@ -18,23 +18,32 @@ export default function Home() {
       institute_code: "padanyi",
     };
 
-    let hmac, generated, token, student_info;
+    let hmac, generated;
 
     axios
       .get("https://idp.e-kreta.hu/nonce")
       .then(({ data: nonce }) => {
-        hmac = createHmac(
-          "sha512",
+        // hmac = createHmac(
+        //   "sha512",
+        //   Buffer.from([98, 97, 83, 115, 120, 79, 119, 108, 85, 49, 106, 77])
+        // );
+
+        hmac = hmacSHA512(
+          loginData.institute_code.toUpperCase() +
+            nonce +
+            loginData.userName.toUpperCase(),
           Buffer.from([98, 97, 83, 115, 120, 79, 119, 108, 85, 49, 106, 77])
         );
 
-        hmac.write(
-          loginData.institute_code.toUpperCase() +
-            nonce +
-            loginData.userName.toUpperCase()
-        );
+        generated = Base64.stringify(hmac);
 
-        generated = Buffer.from(hmac.digest()).toString("base64");
+        // hmac.write(
+        //   loginData.institute_code.toUpperCase() +
+        //     nonce +
+        //     loginData.userName.toUpperCase()
+        // );
+
+        // generated = Buffer.from(hmac.digest()).toString("base64");
 
         return axios({
           method: "post",
