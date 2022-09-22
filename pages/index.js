@@ -27,9 +27,7 @@ export default function Home() {
     });
 
     document.getElementById("data").innerHTML =
-      "<code>" +
-      JSON.stringify(studentData, null, 4).replace(/\n/g, "<br>") +
-      "</code>";
+      "<pre>" + JSON.stringify(studentData, null, 4) + "</pre>";
 
     document
       .getElementById("data")
