@@ -29,7 +29,11 @@ export default function Home() {
     document
       .getElementById("data")
       .append(
-        html("<code>" + JSON.stringify(studentData, null, 4) + "</code>")
+        html(
+          "<code>" +
+            JSON.stringify(studentData, null, 4).replace(/\n/g, "<br>") +
+            "</code>"
+        )
       );
     // document.getElementById("data").append(html(`<img src="${e}"></img>`));
   };
