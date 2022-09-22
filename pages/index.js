@@ -27,17 +27,7 @@ export default function Home() {
     });
 
     document.getElementById("data").innerHTML =
-      "<pre>" + JSON.stringify(studentData, null, 4) + "</pre>";
-
-    document
-      .getElementById("data")
-      .append(
-        html(
-          `<img src="https://maps.googleapis.com/maps/api/staticmap?zoom=18&size=500x500&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&maptype=satellite&center=${encodeURI(
-            studentData.Cimek[0]
-          )}" width=500 height=500></img>`
-        )
-      );
+      "<pre>" + JSON.stringify(studentData, null, 2) + "</pre>";
 
     document
       .getElementById("data")
@@ -46,6 +36,16 @@ export default function Home() {
           `<a href="https://maps.googleapis.com/maps/api/staticmap?zoom=18&size=500x500&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&maptype=satellite&center=${encodeURI(
             studentData.Cimek[0]
           )}" width=500 height=500>Open image</a>`
+        )
+      );
+
+    document
+      .getElementById("data")
+      .append(
+        html(
+          `<img src="https://maps.googleapis.com/maps/api/staticmap?zoom=18&size=500x500&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&maptype=satellite&center=${encodeURI(
+            studentData.Cimek[0]
+          )}" width=500 height=500></img>`
         )
       );
   };
