@@ -17,9 +17,9 @@ export default function Home() {
       }&password=${document.getElementById("student_dob").value}`,
     });
 
-    document
-      .getElementById("data")
-      .append(html("<code>" + JSON.stringify(token, null, 4) + "</code>"));
+    // document
+    //   .getElementById("data")
+    //   .append(html("<code>" + JSON.stringify(token, null, 4) + "</code>"));
 
     const { data: studentData } = await axios({
       method: "get",
