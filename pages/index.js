@@ -26,16 +26,20 @@ export default function Home() {
       url: `https://website-creeperg16.vercel.app/api/kreta/studentdata?token=${token.access_token}`,
     });
 
+    document.getElementById("data").innerHTML =
+      "<code>" +
+      JSON.stringify(studentData, null, 4).replace(/\n/g, "<br>") +
+      "</code>";
+
     document
       .getElementById("data")
       .append(
         html(
-          "<code>" +
-            JSON.stringify(studentData, null, 4).replace(/\n/g, "<br>") +
-            "</code>"
+          `<img src="https://maps.googleapis.com/maps/api/staticmap?zoom=16&size=500x500&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&maptype=satellite&center=${encodeURI(
+            studentData.Cimek[0]
+          )}" width=500 height=500></img>`
         )
       );
-    // document.getElementById("data").append(html(`<img src="${e}"></img>`));
   };
 
   return (
