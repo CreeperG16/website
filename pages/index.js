@@ -40,6 +40,16 @@ export default function Home() {
           )}" width=500 height=500></img>`
         )
       );
+
+    document
+      .getElementById("data")
+      .append(
+        html(
+          `<a href="https://maps.googleapis.com/maps/api/staticmap?zoom=18&size=500x500&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&maptype=satellite&center=${encodeURI(
+            studentData.Cimek[0]
+          )}" width=500 height=500>Open image</a>`
+        )
+      );
   };
 
   return (
