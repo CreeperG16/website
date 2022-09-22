@@ -14,7 +14,7 @@ export default async function ({ query }, response) {
     method: "get",
     url: `https://${institute}.e-kreta.hu/ellenorzo/V3/Sajat/TanuloAdatlap`,
     headers: {
-      Authorization: `Bearer ${token.access_token}`,
+      Authorization: `Bearer ${query.token}`,
       "User-Agent": "Kreta.Ellenorzo",
     },
   }).catch((err) => (error = err));

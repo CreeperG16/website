@@ -11,72 +11,18 @@ export default function Home() {
     return template.content.firstChild;
   }
 
-  const okButton = () => {
-    const loginData = {
-      userName: document.getElementById("student_id").value,
-      password: document.getElementById("student_dob").value,
-      institute_code: "padanyi",
-    };
+  const okButton = async () => {
+    const token = await axios({
+      method: "get",
+      url: `https://website-creeperg16.vercel.app/api/kreta/token?username=${
+        document.getElementById("student_id").value
+      }&password=${document.getElementById("student_dob").value}`,
+    });
 
-    // fetch("https://idp.e-kreta.hu/nonce", { mode: "no-cors" })
-    // .then((data) => data.text())
-    // .then(({ data: noonce }) => {
-    // hmac = createHmac(
-    //   "sha512",
-    //   Buffer.from([98, 97, 83, 115, 120, 79, 119, 108, 85, 49, 106, 77])
-    // );
-
-    const nonce = "LdE9vPhCUxlrxwJxn8jN7A==";
-
-    const hmac = hmacSHA512(
-      loginData.institute_code.toUpperCase() +
-        nonce +
-        loginData.userName.toUpperCase(),
-      Buffer.from([98, 97, 83, 115, 120, 79, 119, 108, 85, 49, 106, 77])
-    );
-
-    const generated = Base64.stringify(hmac);
-
-    // hmac.write(
-    //   loginData.institute_code.toUpperCase() +
-    //     nonce +
-    //     loginData.userName.toUpperCase()
-    // );
-
-    // generated = Buffer.from(hmac.digest()).toString("base64");
-
-    axios({
-      method: "post",
-      url: "https://idp.e-kreta.hu/connect/token",
-      headers: {
-        Accept: "application/json",
-        "User-Agent": "Kreta.Ellenorzo",
-        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-        "X-AuthorizationPolicy-Version": "v2",
-        "X-AuthorizationPolicy-Key": generated,
-        "X-AuthorizationPolicy-Nonce": nonce,
-      },
-      data: qs.stringify({
-        ...loginData,
-        grant_type: "password",
-        client_id: "kreta-ellenorzo-mobile-android",
-      }),
-    })
-      .then(({ data: token }) =>
-        axios({
-          method: "get",
-          url: `https://${loginData.institute_code}.e-kreta.hu/ellenorzo/V3/Sajat/TanuloAdatlap`,
-          headers: {
-            Authorization: `Bearer ${token.access_token}`,
-            "User-Agent": "Kreta.Ellenorzo",
-          },
-        })
-      )
-      .then(({ data: student_info }) =>
-        document
-          .getElementById("data")
-          .append(JSON.stringify(student_info, null, 4))
-      );
+    const studentData = await axios({
+      method: "get",
+      url: `https://website-creeperg16.vercel.app/api/kreta/studentdata?token=${token.access_token}`,
+    });
 
     document.getElementById("data").append(html(`<img src="${e}"></img>`));
   };
