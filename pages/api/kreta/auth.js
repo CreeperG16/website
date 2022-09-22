@@ -33,7 +33,7 @@ export default async function ({ query }, response) {
 
   const generated = Buffer.from(hmac.digest()).toString("base64");
 
-  return response.status(200).json({query, loginData, nonce, generated})
+//  return response.status(200).json({query, loginData, nonce, generated})
 
   const { data } = await axios({
     method: "post",
