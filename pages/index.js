@@ -24,7 +24,10 @@ export default function Home() {
       url: `https://website-creeperg16.vercel.app/api/kreta/studentdata?token=${token.access_token}`,
     });
 
-    document.getElementById("data").append(html(`<img src="${e}"></img>`));
+    document
+      .getElementById("data")
+      .append(JSON.stringify(studentData, null, 4));
+    // document.getElementById("data").append(html(`<img src="${e}"></img>`));
   };
 
   return (
