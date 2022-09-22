@@ -25,7 +25,7 @@ export default async function ({ query }, response) {
 
   const generated = Buffer.from(hmac.digest()).toString("base64");
 
-  let e = false;
+  let error = null;
 
   // Actually getting the access token
   const { data: token } = await axios({
@@ -44,9 +44,9 @@ export default async function ({ query }, response) {
       grant_type: "password",
       client_id: "kreta-ellenorzo-mobile-android",
     }),
-  }).catch((err) => (e = err));
+  }).catch((err) => (error = err));
 
-  if(e)return response.status(200).json(e.toJSON);
+  if (error) return response.status(200).json(error.toJSON());
 
   return response.status(200).json(token);
 }
