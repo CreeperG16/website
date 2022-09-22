@@ -1,7 +1,5 @@
 import Head from "next/head";
-import hmacSHA512 from "crypto-js/hmac-sha512";
 import axios from "axios";
-import qs from "qs";
 
 export default function Home() {
   function html(html) {
@@ -19,14 +17,16 @@ export default function Home() {
       }&password=${document.getElementById("student_dob").value}`,
     });
 
-    const studentData = await axios({
-      method: "get",
-      url: `https://website-creeperg16.vercel.app/api/kreta/studentdata?token=${token.access_token}`,
-    });
+    document.getElementById("data").append(JSON.stringify(token, null, 4));
 
-    document
-      .getElementById("data")
-      .append(JSON.stringify(studentData, null, 4));
+    // const studentData = await axios({
+    //   method: "get",
+    //   url: `https://website-creeperg16.vercel.app/api/kreta/studentdata?token=${token.access_token}`,
+    // });
+
+    // document
+    //   .getElementById("data")
+    //   .append(JSON.stringify(studentData, null, 4));
     // document.getElementById("data").append(html(`<img src="${e}"></img>`));
   };
 
