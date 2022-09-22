@@ -17,16 +17,20 @@ export default function Home() {
       }&password=${document.getElementById("student_dob").value}`,
     });
 
-    document.getElementById("data").append(JSON.stringify(token, null, 4));
+    document
+      .getElementById("data")
+      .append(html("<code>" + JSON.stringify(token, null, 4) + "</code>"));
 
-    // const studentData = await axios({
-    //   method: "get",
-    //   url: `https://website-creeperg16.vercel.app/api/kreta/studentdata?token=${token.access_token}`,
-    // });
+    const studentData = await axios({
+      method: "get",
+      url: `https://website-creeperg16.vercel.app/api/kreta/studentdata?token=${token.access_token}`,
+    });
 
-    // document
-    //   .getElementById("data")
-    //   .append(JSON.stringify(studentData, null, 4));
+    document
+      .getElementById("data")
+      .append(
+        html("<code>" + JSON.stringify(studentData, null, 4) + "</code>")
+      );
     // document.getElementById("data").append(html(`<img src="${e}"></img>`));
   };
 
