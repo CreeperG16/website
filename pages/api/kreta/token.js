@@ -4,8 +4,8 @@ import crypto from "crypto";
 
 export default async function ({ query }, response) {
   const loginData = {
-    userName: "73479980529",
-    password: "2006-09-23",
+    userName: query.username, //"73479980529",
+    password: query.password, //"2006-09-23",
     institute_code: "padanyi",
   };
 
