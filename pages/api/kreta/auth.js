@@ -55,7 +55,7 @@ export default async function ({ query }, response) {
     }),
   }).catch(e => (err = e))
 
-  if(err) return response.status(200).json(err.toJson());
+  if(err) return response.status(200).json(err.toJSON());
 
   return (
     response
