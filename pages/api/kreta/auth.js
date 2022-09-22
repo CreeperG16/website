@@ -3,7 +3,7 @@ import crypto from "crypto";
 import qs from "qs";
 
 export default async function ({ query }, response) {
-  return response.status(200).json(query);
+//  return response.status(200).json(query);
 
   if(!query.username || !query.password || !query.institute)
     return response.status(200).json(query);
@@ -18,6 +18,8 @@ export default async function ({ query }, response) {
     method: "get",
     url: "https://idp.e-kreta.hu/nonce"
   });
+
+  return response.status(200).json({...query, nonce})
 
   const hmac = crypto.createHmac(
     "sha512",
