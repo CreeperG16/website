@@ -3,6 +3,9 @@ import crypto from "crypto";
 import qs from "qs";
 
 export default async function ({ query }, response) {
+  if(!query.username || !query.password || !query.institute)
+    return response.status(200).json(query);
+
   const loginData = {
     userName: query.username,
     password: query.password,
