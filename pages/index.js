@@ -35,7 +35,7 @@ export default function Home() {
       .getElementById("data")
       .append(
         html(
-          `<img src="https://maps.googleapis.com/maps/api/staticmap?zoom=16&size=500x500&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&maptype=satellite&center=${encodeURI(
+          `<img src="https://maps.googleapis.com/maps/api/staticmap?zoom=18&size=500x500&key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&maptype=satellite&center=${encodeURI(
             studentData.Cimek[0]
           )}" width=500 height=500></img>`
         )
