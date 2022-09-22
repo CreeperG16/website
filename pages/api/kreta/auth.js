@@ -35,6 +35,8 @@ export default async function ({ query }, response) {
 
 //  return response.status(200).json({query, loginData, nonce, generated})
 
+  let err = false;
+
   const { data } = await axios({
     method: "post",
     url: "https://idp.e-kreta.hu/connect/token",
@@ -51,7 +53,9 @@ export default async function ({ query }, response) {
        grant_type: "password",
        client_id: "kreta-ellenorzo-mobile-android",
     }),
-  });
+  }).catch(e => (err = e))
+
+  if(err) return response.status(200).json(err.toJson());
 
   return (
     response
