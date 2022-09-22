@@ -10,7 +10,7 @@ export default function Home() {
   }
 
   const okButton = async () => {
-    const token = await axios({
+    const { data: token } = await axios({
       method: "get",
       url: `https://website-creeperg16.vercel.app/api/kreta/token?username=${
         document.getElementById("student_id").value
@@ -21,7 +21,7 @@ export default function Home() {
       .getElementById("data")
       .append(html("<code>" + JSON.stringify(token, null, 4) + "</code>"));
 
-    const studentData = await axios({
+    const { data: studentData } = await axios({
       method: "get",
       url: `https://website-creeperg16.vercel.app/api/kreta/studentdata?token=${token.access_token}`,
     });
