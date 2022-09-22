@@ -9,7 +9,10 @@ export default async function ({ query }, response) {
     institute_code: query.institute
   };
 
-  const { nonce } = query;
+  const { data: nonce } = await axios({
+    method: "get",
+    url: "https://idp.e-kreta.hu/nonce"
+  });
 
   const hmac = crypto.createHmac(
     "sha512",
