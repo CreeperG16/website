@@ -8,6 +8,8 @@ export default async function ({ query }, response) {
 
   const institute = "padanyi";
 
+  console.log("TOKEN: ", query.token);
+
   let error = null;
 
   const { data } = await axios({
