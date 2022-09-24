@@ -19,6 +19,8 @@ export default async function ({ query }, response) {
     },
   }).catch((err) => (error = err));
 
+  console.log({ data, error });
+
   if (error) return response.status(200).json(error.toJSON());
 
   return response.status(200).json(data);
