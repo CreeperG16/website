@@ -1,4 +1,5 @@
-import ytdl from "ytdl-core";
+// import ytdl from "ytdl-core";
+import ytdl from "react-native-ytdl";
 
 export default async function ({ query }, res) {
     if (!query.url) return res.status(400).json({ message: "Missing video URL" });
