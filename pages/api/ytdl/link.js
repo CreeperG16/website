@@ -3,7 +3,13 @@ import ytdl from "ytdl-core";
 
 export default async function ({ body }, res) {
     // if (!query.url) return res.status(400).json({ message: "Missing video URL" });
-    const url = JSON.parse(body).url;
+    console.log(body);
+    let url;
+    try {
+        url = body.url;
+    } catch (e) {
+        url = JSON.parse(body).url;
+    }
 
     const info = await ytdl.getInfo(url);
     const audios = ytdl.filterFormats(info.formats, "audioonly");
