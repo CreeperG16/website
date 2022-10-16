@@ -8,5 +8,5 @@ export default async function ({ body }, res) {
     const info = await ytdl.getInfo(url);
     const audios = ytdl.filterFormats(info.formats, "audioonly");
 
-    return res.send(JSON.stringify({ audios }));
+    return res.status(200).json({ audios });
 }
