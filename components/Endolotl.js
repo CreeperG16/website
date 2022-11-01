@@ -7,7 +7,7 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 
 export default function Model(props) {
     const group = useRef();
-    const { nodes, materials, animations } = useGLTF("/endolotl.gltf");
+    const { nodes, materials, animations } = useGLTF("/public/endolotl.gltf");
     const { actions } = useAnimations(animations, group);
     return (
         <group ref={group} {...props} dispose={null}>
@@ -154,4 +154,4 @@ export default function Model(props) {
     );
 }
 
-useGLTF.preload("/endolotl.gltf");
+useGLTF.preload("/public/endolotl.gltf");
