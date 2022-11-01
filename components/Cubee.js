@@ -7,7 +7,7 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 
 export default function Model(props) {
     const group = useRef();
-    const { nodes, materials, animations } = useGLTF("/public/cubee.gltf");
+    const { nodes, materials, animations } = useGLTF("/pet/cubee.gltf");
     const { actions } = useAnimations(animations, group);
     return (
         <group ref={group} {...props} dispose={null}>
@@ -121,4 +121,4 @@ export default function Model(props) {
     );
 }
 
-useGLTF.preload("/public/cubee.gltf");
+useGLTF.preload("/pet/cubee.gltf");
