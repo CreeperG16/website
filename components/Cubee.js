@@ -12,8 +12,8 @@ export default function Model(props) {
 
     useEffect(() => {
         console.log(actions);
-        actions["animation.hive.pets.cubee.idle.fly"].play();
         actions["animation.hive.pets.cubee.idle.wings"].play();
+        actions["animation.hive.pets.cubee.idle.fly"].play();
     }, [mixer]);
 
     return (
