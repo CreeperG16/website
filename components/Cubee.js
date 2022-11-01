@@ -11,7 +11,8 @@ export default function Model(props) {
     const { actions, mixer } = useAnimations(animations, group);
 
     useEffect(() => {
-        actions.animations.play();
+        console.log(actions);
+        // actions.animations.play();
     }, [mixer]);
 
     return (
