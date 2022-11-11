@@ -54,6 +54,22 @@ export default function ({ query }, res) {
                 return generated;
             }
 
+            function gen() {
+                const ri = (mx) => Math.floor(Math.random() * mx);
+                const adjNum = ri(3) + 1;
+                const chosenAdjs = new Array(adjNum).fill(0).map((_, i, arr) => {
+                    let num;
+
+                    while (arr.includes(num)) num = ri(adjectives.length);
+
+                    return i > 0 ? adjectives[num].toLowerCase() : adjectives[num];
+                });
+
+                const generated = chosenAdjs.join(", ") + nouns[ri(nouns.length)].toLowerCase() + "!";
+
+                return generated;
+            }
+
             // const parser = new DOMParser();
             // const xml = parser.parseFromString(x);
             // e
@@ -67,7 +83,7 @@ export default function ({ query }, res) {
                 if (type === "f") nouns.push(word.innerHTML);
             }
 
-            const insults = new Array(parseInt(query.count ?? 1)).fill("").map(() => generate());
+            const insults = new Array(parseInt(query.count ?? 1)).fill("").map(() => query.new === "true" ? gen() : generate());
 
             return res.status(200).json({ insults });
         });
