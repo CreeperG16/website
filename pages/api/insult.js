@@ -67,7 +67,7 @@ export default function ({ query }, res) {
                 if (type === "f") nouns.push(word.innerHTML);
             }
 
-            const insults = new Array(query.count ?? 1).map(() => generate());
+            const insults = new Array(query.count ?? 1).fill("").map(() => generate());
 
             return res.status(200).json({ insults });
         });
