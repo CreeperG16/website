@@ -32,7 +32,7 @@ function getRandomInt(max) {
 
 import { parse } from "node-html-parser";
 
-export default function (_req, res) {
+export default function ({ query }, res) {
     fetch("https://kretainsult.online/piszkosszavak.xml")
         .then((x) => x.text())
         .then((x) => {
@@ -67,6 +67,8 @@ export default function (_req, res) {
                 if (type === "f") nouns.push(word.innerHTML);
             }
 
-            return res.status(200).json({ insult: generate() });
+            const insults = new Array(query.count ?? 1).map(() => generate());
+
+            return res.status(200).json({ insults });
         });
 }
