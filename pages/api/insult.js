@@ -30,6 +30,8 @@ function getRandomInt(max) {
 // xhttp.send();
 // #endregion
 
+import { parse } from "node-html-parser";
+
 export default function (_req, res) {
     fetch("https://kretainsult.online/piszkosszavak.xml")
         .then((x) => x.text())
@@ -52,8 +54,10 @@ export default function (_req, res) {
                 return generated;
             }
 
-            const parser = new DOMParser();
-            const xml = parser.parseFromString(x);
+            // const parser = new DOMParser();
+            // const xml = parser.parseFromString(x);
+
+            const xml = parse(x);
 
             const words = xml.getElementsByTagName("Word");
             for (const word of words) {
