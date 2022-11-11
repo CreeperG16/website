@@ -67,6 +67,6 @@ export default function (_req, res) {
                 if (type === "f") nouns.push(word.innerHTML);
             }
 
-            return response.status(200).json({ insult: generate() });
+            return res.status(200).json({ insult: generate() });
         });
 }
